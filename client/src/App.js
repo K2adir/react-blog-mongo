@@ -1,12 +1,12 @@
 import "./App.scss";
 import Navigation from "./components/Navigation/Navigation";
-import Posts from "./components/Posts/Posts";
+import Post from "./components/Post/Post";
 
 function App() {
   return (
     <main className="App">
       <Navigation />
-      <Posts />
+      <Post />
     </main>
   );
 }

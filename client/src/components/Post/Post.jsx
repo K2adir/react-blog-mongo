@@ -1,6 +1,6 @@
-import "./Posts.scss";
+import "./Post.scss";
 
-const Posts = () => {
+const Post = () => {
   return (
     <div className="post_container">
       <img src="https://picsum.photos/275/150" alt="" />
@@ -15,4 +15,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default Post;
