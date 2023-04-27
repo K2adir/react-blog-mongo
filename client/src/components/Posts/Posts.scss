@@ -1,0 +1,23 @@
+.post_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  img {
+    width: 30vw;
+  }
+
+  .post_title {
+    margin-left: 20px;
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+}
