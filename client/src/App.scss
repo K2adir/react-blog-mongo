@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 1px dashed olivedrab;
+}
+
+body {
+  color: #383737;
+}
+
+main {
+  padding: 0.8rem;
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
