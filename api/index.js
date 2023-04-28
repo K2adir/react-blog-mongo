@@ -9,6 +9,7 @@ const User = require("./models/User");
 const { create } = require("./models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
 ////
 var salt = bcrypt.genSaltSync(10);
 const secret = process.env.JTW_PASS;
@@ -16,6 +17,7 @@ const secret = process.env.JTW_PASS;
 
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
+app.use(cookieParser());
 
 // version error handling thingy.
 mongoose.set("strictQuery", true);
@@ -49,19 +51,27 @@ app.post("/register", async (req, res) => {
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
   const userDoc = await User.findOne({ username });
-  //   res.json(userDoc);   CHECKS THE PAYLOAD
-  const passCorrect = bcrypt.compareSync(password, userDoc.password);
-  //   res.json(passCorrect); CHECKS PASS - TRUE / FALSE on Payload
-
-  // if login is success, network/headers will display set-cookie
-  if (passCorrect) {
+  const passOk = bcrypt.compareSync(password, userDoc.password);
+  if (passOk) {
+    // logged in
     jwt.sign({ username, id: userDoc._id }, secret, {}, (err, token) => {
       if (err) throw err;
-      res.cookie("token", token).json("ok");
+      res.cookie("token", token).json({
+        id: userDoc._id,
+        username,
+      });
     });
   } else {
-    res.status(400).json("check your username or pass");
+    res.status(400).json("wrong credentials");
   }
+});
+
+app.get("/profile", (req, res) => {
+  const { token } = req.cookies;
+  jwt.verify(token, secret, {}, (err, info) => {
+    if (err) throw err;
+    res.json(info);
+  });
 });
 
 app.listen(PORT, () => {
