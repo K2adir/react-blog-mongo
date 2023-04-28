@@ -1,15 +1,16 @@
+import { Link } from "react-router-dom";
 import "./Navigation.scss";
 
 const Navigation = () => {
   return (
     <main>
       <nav className="nav_container">
-        <a href="" className="logo">
+        <Link to="/" className="logo">
           Blog
-        </a>
+        </Link>
         <div className="nav_links">
-          <a href="">Login</a>
-          <a href="">Register</a>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
         </div>
       </nav>
     </main>
