@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Navigate } from "react-router";
+import { UserContext } from "../../Context/UserContext";
 import "./LoginRegisterForm.scss";
 
 const Login = () => {
@@ -7,6 +8,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [redirect, setRedirect] = useState(false);
+
+  const { setUserData } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +21,10 @@ const Login = () => {
     });
     ////
     if (response.ok) {
-      setRedirect(true);
+      response.json().then((userInfo) => {
+        setUserData(userInfo);
+        setRedirect(true);
+      });
     } else {
       alert("login failed, ABC123");
     }
