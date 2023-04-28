@@ -14,13 +14,23 @@ const Navigation = () => {
     });
   }, []);
 
+  function handleLogOut() {
+    fetch("http://localhost:4500/logout", {
+      credentials: "include",
+      method: "POST",
+    });
+    setUsername(null);
+  }
+
   return (
     <main>
       <nav className="nav_container">
         {username && (
           <>
             <Link to="/create">New Post</Link>
-            <Link to="">Logout</Link>
+            <Link to="/" onClick={handleLogOut}>
+              Logout
+            </Link>
           </>
         )}
         {!username && (
