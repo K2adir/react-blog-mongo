@@ -10,11 +10,17 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await fetch("http://localhost:4500/register", {
+    const response = await fetch("http://localhost:4500/register", {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: { "Content-Type": "application/json" },
     });
+
+    if (response.status === 200) {
+      alert("Registered");
+    } else {
+      alert("can't register");
+    }
 
     if (
       username.trim() === "" ||
