@@ -1,25 +1,44 @@
 import React, { useState } from "react";
+import { Navigate } from "react-router";
 import "./LoginRegisterForm.scss";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const response = await fetch("http://localhost:4500/login", {
+      method: "POST",
+      body: JSON.stringify({ username, password }),
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    });
+    ////
+    if (response.ok) {
+      setRedirect(true);
+    } else {
+      alert("login failed, ABC123");
+    }
+    ////
     if (username.trim() === "" || password.trim() === "") {
       setError("Please enter a valid username and password");
       return;
     }
 
-    // TODO: Perform login logic here
+    // TODO: Perform login logic
 
     setUsername("");
     setPassword("");
     setError("");
   };
+
+  // if login OK, take user to home
+  if (redirect) {
+    return <Navigate to={"/"} />;
+  }
 
   return (
     <div className="form_layout">
