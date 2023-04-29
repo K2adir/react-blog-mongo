@@ -5,7 +5,7 @@ import "./Post.scss";
 const Post = ({ title, summary, cover, createdAt }) => {
   return (
     <div className="post_container">
-      <img src={cover} alt="" />
+      <img src={`http://localhost:4500/${cover}`} alt="" />
       <div className="post_title">
         <h1>{title}</h1>
         <p>{summary}</p>

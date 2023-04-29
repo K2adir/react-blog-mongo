@@ -41,11 +41,13 @@ const NewPost = () => {
   //
   async function createPost(e) {
     e.preventDefault();
+    //
     const data = new FormData();
     data.set("title", title);
     data.set("summary", summary);
     data.set("content", content);
     data.set("file", files[0]);
+    //
     const response = await fetch("http://localhost:4500/post", {
       method: "POST",
       body: data,

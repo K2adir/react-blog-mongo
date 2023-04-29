@@ -29,7 +29,8 @@ const secret = process.env.JTW_PASS;
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(cookieParser());
-
+// lets express use the uploads folder. without this, no images/cover will be displayed
+app.use("/uploads", express.static("uploads"));
 // version error handling thingy.
 mongoose.set("strictQuery", true);
 /// connection
