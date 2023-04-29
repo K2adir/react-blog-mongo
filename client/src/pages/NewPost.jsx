@@ -35,9 +35,24 @@ const NewPost = () => {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
+  const [file, setFile] = useState("");
+  //
+  //
+  function createPost(e) {
+    e.preventDefault();
+    const data = new FormData();
+    data.set("title", title);
+    data.set("summary", summary);
+    data.set("content", content);
+    data.set("file", file[0]);
+    fetch("http://localhost:4500/post", {
+      method: "POST",
+      body: data,
+    });
+  }
 
   return (
-    <form>
+    <form onSubmit={createPost}>
       <input
         type="title"
         placeholder={"Title"}
@@ -50,7 +65,7 @@ const NewPost = () => {
         value={summary}
         onChange={(e) => setSummary(e.target.value)}
       />
-      <input type="file" />
+      <input type="file" onChange={(e) => setFile(e.target.files)} />
       <ReactQuill
         value={content}
         modules={modules}

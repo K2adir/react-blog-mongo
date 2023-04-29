@@ -10,6 +10,8 @@ const { create } = require("./models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
+const multer = require("multer");
+const uploadMiddle = multer({ desk: "uploads/" });
 ////
 var salt = bcrypt.genSaltSync(10);
 const secret = process.env.JTW_PASS;
@@ -76,6 +78,10 @@ app.get("/profile", (req, res) => {
 
 app.post("/logout", (req, res) => {
   res.cookie("token", "").json("ok");
+});
+
+app.post("/post", uploadMiddle.single("file"), (req, res) => {
+  res.json(req.file);
 });
 
 app.listen(PORT, () => {
