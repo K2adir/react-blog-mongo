@@ -99,12 +99,13 @@ app.post("/post", uploadMiddle.single("file"), async (req, res) => {
   // create post
   const { title, summary, content } = req.body;
 
-  await Post.create({
+  const postDoc = await Post.create({
     title,
     summary,
     content,
     cover: newPath,
   });
+  res.json(postDoc);
 });
 
 app.listen(PORT, () => {

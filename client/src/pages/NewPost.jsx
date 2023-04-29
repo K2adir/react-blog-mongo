@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form } from "react-router-dom";
+import { Form, Navigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 /// React-Quill module -> from their npm
@@ -36,6 +36,7 @@ const NewPost = () => {
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
   const [files, setFiles] = useState("");
+  const [redirect, setRedirect] = useState(false);
   //
   //
   async function createPost(e) {
@@ -49,8 +50,14 @@ const NewPost = () => {
       method: "POST",
       body: data,
     });
+    if (response.ok) {
+      setRedirect(true);
+    }
   }
 
+  if (redirect) {
+    return <Navigate to={"/"} />;
+  }
   return (
     <form onSubmit={createPost}>
       <input
