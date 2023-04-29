@@ -11,7 +11,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
-const uploadMiddle = multer({ desk: "uploads/" });
+const uploadMiddle = multer({ dest: "uploads/" });
+const fs = require("fs");
 ////
 var salt = bcrypt.genSaltSync(10);
 const secret = process.env.JTW_PASS;
@@ -81,7 +82,11 @@ app.post("/logout", (req, res) => {
 });
 
 app.post("/post", uploadMiddle.single("file"), (req, res) => {
-  res.json({ files: req.file });
+  const { originalname, path } = req.file;
+  const parts = originalname.split("");
+  const imageExtension = "jpg";
+  fs.renameSync(path, path + "." + imageExtension);
+  res.json({ imageExtension });
 });
 
 app.listen(PORT, () => {
