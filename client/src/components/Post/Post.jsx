@@ -1,15 +1,12 @@
 import "./Post.scss";
 
-const Post = () => {
+const Post = ({ title, summary, cover }) => {
   return (
     <div className="post_container">
-      <img src="https://picsum.photos/275/150" alt="" />
+      <img src={cover} alt="" />
       <div className="post_title">
-        <h1>Hello Post</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est libero
-          nulla ex fuga iure totam quis, corrupti enim quam placeat.{" "}
-        </p>
+        <h1>{title}</h1>
+        <p>{summary}</p>
       </div>
     </div>
   );

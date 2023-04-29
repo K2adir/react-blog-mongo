@@ -6,6 +6,7 @@ import Login from "./components/LoginRegisterForm/Login";
 import Register from "./components/LoginRegisterForm/Register";
 import { UserContextProvider } from "./Context/UserContext";
 import NewPost from "./pages/NewPost";
+import PostsStream from "./pages/PostsStream";
 function App() {
   return (
     <UserContextProvider>
@@ -16,8 +17,7 @@ function App() {
             index
             element={
               <>
-                <Post />
-                <Post />
+                <PostsStream />
               </>
             }
           />

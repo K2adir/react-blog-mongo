@@ -108,6 +108,10 @@ app.post("/post", uploadMiddle.single("file"), async (req, res) => {
   res.json(postDoc);
 });
 
+app.get("/post", async (req, res) => {
+  res.json(await Post.find());
+});
+
 app.listen(PORT, () => {
   console.log("listen @", PORT);
 });
