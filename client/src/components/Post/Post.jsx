@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { formatISO9075 } from "date-fns";
+import { format } from "date-fns";
 import "./Post.scss";
 
 const Post = ({ title, summary, cover, createdAt }) => {
@@ -10,7 +10,7 @@ const Post = ({ title, summary, cover, createdAt }) => {
         <h1>{title}</h1>
         <p>{summary}</p>
         <Link>Author</Link>
-        <time>{formatISO9075(new Date(createdAt))}</time>
+        <time>{format(new Date(createdAt), "MMM d, yyyy")}</time>
       </div>
     </div>
   );

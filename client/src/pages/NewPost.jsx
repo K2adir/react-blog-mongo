@@ -49,6 +49,7 @@ const NewPost = () => {
     const response = await fetch("http://localhost:4500/post", {
       method: "POST",
       body: data,
+      credentials: "include",
     });
     if (response.ok) {
       setRedirect(true);
