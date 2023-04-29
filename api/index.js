@@ -18,6 +18,8 @@ const Post = require("./models/Post");
 const { create } = require("./models/User");
 //
 const fs = require("fs");
+const { title } = require("process");
+const { request } = require("http");
 ////
 // auth
 var salt = bcrypt.genSaltSync(10);
@@ -87,12 +89,22 @@ app.post("/logout", (req, res) => {
   res.cookie("token", "").json("ok");
 });
 
-app.post("/post", uploadMiddle.single("file"), (req, res) => {
+app.post("/post", uploadMiddle.single("file"), async (req, res) => {
   const { originalname, path } = req.file;
-  const parts = originalname.split("");
+  //   const parts = originalname.split("");
   const imageExtension = "jpg";
+  const newPath = path + "." + imageExtension;
   fs.renameSync(path, path + "." + imageExtension);
   res.json({ imageExtension });
+  // create post
+  const { title, summary, content } = req.body;
+
+  await Post.create({
+    title,
+    summary,
+    content,
+    cover: newPath,
+  });
 });
 
 app.listen(PORT, () => {
