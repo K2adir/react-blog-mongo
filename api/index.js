@@ -81,7 +81,7 @@ app.post("/logout", (req, res) => {
 });
 
 app.post("/post", uploadMiddle.single("file"), (req, res) => {
-  res.json(req.file);
+  res.json({ files: req.file });
 });
 
 app.listen(PORT, () => {
