@@ -113,12 +113,25 @@ app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
 });
 
 app.get("/post", async (req, res) => {
-  res.json(
-    await Post.find()
-      //   .populate("author", ["username"])
-      .sort({ createdAt: -1 })
-      .limit(20)
-  );
+  const page = parseInt(req.query.page) || 1;
+  const pageSize = parseInt(req.query.pageSize) || 3;
+  const skip = (page - 1) * pageSize;
+
+  const posts = await Post.find()
+    .populate("author", ["username"])
+    .sort({ createdAt: -1 })
+    .skip(skip)
+    .limit(pageSize);
+
+  const totalPosts = await Post.countDocuments();
+  const totalPages = Math.ceil(totalPosts / pageSize);
+
+  res.json({
+    page,
+    totalPages,
+    pageSize,
+    items: posts,
+  });
 });
 
 app.listen(PORT, () => {
