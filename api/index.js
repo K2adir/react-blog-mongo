@@ -1,19 +1,25 @@
 require("dotenv").config();
 
 const express = require("express");
-const cors = require("cors");
-const { default: mongoose } = require("mongoose");
 const app = express();
 const PORT = 4500;
-const User = require("./models/User");
-const { create } = require("./models/User");
+const { default: mongoose } = require("mongoose");
+// npm packs
+const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const uploadMiddle = multer({ dest: "uploads/" });
+//
+//models
+const User = require("./models/User");
+const Post = require("./models/Post");
+const { create } = require("./models/User");
+//
 const fs = require("fs");
 ////
+// auth
 var salt = bcrypt.genSaltSync(10);
 const secret = process.env.JTW_PASS;
 ////
