@@ -147,19 +147,18 @@ app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
 //for example, use ths on main page with 3 posts showing, place a Link for
 // all blog posts and edit the route of below to something else, like /allposts
 //
-// <PostStream/> component works with this code.
-//
-// app.get("/post", async (req, res) => {
-//   res.json(
-//     await Post.find()
-//       .populate("author", ["username"])
-//       .sort({ createdAt: -1 })
-//       .limit(3)
-//   );
-// });
+
+app.get("/post", async (req, res) => {
+  res.json(
+    await Post.find()
+      .populate("author", ["username"])
+      .sort({ createdAt: -1 })
+      .limit(3)
+  );
+});
 
 // <PostList/> component works with this version
-app.get("/post", async (req, res) => {
+app.get("/blog", async (req, res) => {
   //pagination settings
   const page = parseInt(req.query.page) || 1;
   const pageSize = parseInt(req.query.pageSize) || 3;

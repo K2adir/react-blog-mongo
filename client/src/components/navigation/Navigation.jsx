@@ -31,6 +31,10 @@ const Navigation = () => {
       <nav className="nav_container">
         {username && (
           <>
+            <Link to="/" className="logo">
+              Home
+            </Link>
+            <Link to="/blog">All Posts</Link>
             <Link to="/create">New Post</Link>
             <Link to="/" onClick={handleLogOut}>
               Logout
@@ -45,9 +49,6 @@ const Navigation = () => {
             </div>
           </>
         )}
-        <Link to="/" className="logo">
-          Blog
-        </Link>
       </nav>
     </main>
   );
