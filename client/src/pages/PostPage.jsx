@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+// safe way to use innerHTML
+import parse from "html-react-parser";
 
 const PostPage = () => {
   const [postInfo, setPostInfo] = useState(null);
@@ -19,7 +21,10 @@ const PostPage = () => {
       <img src={`http://localhost:4500/${postInfo.cover}`} />
       <h1>{postInfo.title}</h1>
       <h4>{postInfo.summary}</h4>
-      <p dangerouslySetInnerHTML={{ __html: postInfo.content }}></p>
+      {parse(`
+   <p>${postInfo.content}</p>
+  
+  `)}
     </div>
   );
 };
