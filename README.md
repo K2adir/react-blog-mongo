@@ -1,4 +1,4 @@
-React MERN Stack blog.
+React (MERN Stack) blog.
 
 Features:
 User Auth, registration and login
