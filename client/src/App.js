@@ -8,24 +8,26 @@ import { UserContextProvider } from "./Context/UserContext";
 import NewPost from "./pages/NewPost";
 import PostsStream from "./pages/PostsStream";
 import PostsList from "./components/PostList/PostList";
+import PostPage from "./pages/PostPage";
 function App() {
   return (
     <UserContextProvider>
       <main className="App">
         <Navigation />
-        <PostsList />
+
         <Routes>
           <Route
             index
             element={
               <>
-                <PostsStream />
+                <PostsList />
               </>
             }
           />
           <Route path={"/login"} element={<Login />} />
           <Route path={"/register"} element={<Register />} />
           <Route path={"/create"} element={<NewPost />} />
+          <Route path={"/post/:id"} element={<PostPage />} />
         </Routes>
       </main>
     </UserContextProvider>

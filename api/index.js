@@ -112,7 +112,25 @@ app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
   });
 });
 
+// this can be used to display limited num of posts on main page,
+// and adapt the one below with pagination for another route.
+//for example, use ths on main page with 3 posts showing, place a Link for
+// all blog posts and edit the route of below to something else, like /allposts
+//
+// <PostStream/> component works with this code.
+//
+// app.get("/post", async (req, res) => {
+//   res.json(
+//     await Post.find()
+//       .populate("author", ["username"])
+//       .sort({ createdAt: -1 })
+//       .limit(3)
+//   );
+// });
+
+// <PostList/> component works with this version
 app.get("/post", async (req, res) => {
+  //pagination settings
   const page = parseInt(req.query.page) || 1;
   const pageSize = parseInt(req.query.pageSize) || 3;
   const skip = (page - 1) * pageSize;
@@ -132,6 +150,13 @@ app.get("/post", async (req, res) => {
     pageSize,
     items: posts,
   });
+});
+
+// getting post via _id / for pages/postpage
+app.get("/post/:id", async (req, res) => {
+  const { id } = req.params;
+  const postDoc = await Post.findById(id).populate("author", ["username"]);
+  res.json(postDoc);
 });
 
 app.listen(PORT, () => {

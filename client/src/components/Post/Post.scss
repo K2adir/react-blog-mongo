@@ -4,6 +4,11 @@
   align-items: center;
   margin: 1rem 0;
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   img {
     width: 35vw;
     border-radius: 0.5rem;

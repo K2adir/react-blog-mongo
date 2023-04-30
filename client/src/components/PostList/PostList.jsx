@@ -37,6 +37,7 @@ function PostsList() {
           title={post.title}
           summary={post.summary}
           cover={post.cover}
+          _id={post._id}
           createdAt={post.createdAt}
         />
       ))}
