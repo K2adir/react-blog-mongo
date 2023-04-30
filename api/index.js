@@ -159,6 +159,10 @@ app.get("/post/:id", async (req, res) => {
   res.json(postDoc);
 });
 
+app.get("edit/:id", (req, res) => {
+  //
+});
+
 app.listen(PORT, () => {
   console.log("listen @", PORT);
 });

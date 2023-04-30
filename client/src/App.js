@@ -9,6 +9,7 @@ import NewPost from "./pages/NewPost";
 import PostsStream from "./pages/PostsStream";
 import PostsList from "./components/PostList/PostList";
 import PostPage from "./pages/PostPage";
+import EditPost from "./pages/EditPost";
 function App() {
   return (
     <UserContextProvider>
@@ -27,6 +28,7 @@ function App() {
           <Route path={"/login"} element={<Login />} />
           <Route path={"/register"} element={<Register />} />
           <Route path={"/create"} element={<NewPost />} />
+          <Route path={"/edit/:id"} element={<EditPost />} />
           <Route path={"/post/:id"} element={<PostPage />} />
         </Routes>
       </main>
