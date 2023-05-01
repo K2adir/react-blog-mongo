@@ -43,6 +43,7 @@ function PostsList() {
             cover={post.cover}
             _id={post._id}
             createdAt={post.createdAt}
+            author={post.author}
           />
         ))}
       </div>

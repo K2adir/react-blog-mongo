@@ -5,6 +5,13 @@
   @media screen and (max-width: 650px) {
     flex-direction: column;
     align-items: center;
+
+    a {
+      margin-top: 1rem;
+      &:first-child {
+        margin-top: 2rem;
+      }
+    }
   }
 }
 

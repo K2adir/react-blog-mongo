@@ -26,8 +26,6 @@ function App() {
               <>
                 <Hero />
                 <PostsStream />
-
-                <Footer />
               </>
             }
           />
@@ -38,6 +36,7 @@ function App() {
           <Route path={"/edit/:id"} element={<EditPost />} />
           <Route path={"/post/:id"} element={<PostPage />} />
         </Routes>
+        <Footer />
       </main>
     </UserContextProvider>
   );
