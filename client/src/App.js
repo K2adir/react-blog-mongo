@@ -11,6 +11,7 @@ import PostsList from "./components/PostList/PostList";
 import PostPage from "./pages/PostPage";
 import EditPost from "./pages/EditPost";
 import Hero from "./components/Hero/Hero";
+import Footer from "./components/Footer/Footer";
 function App() {
   return (
     <UserContextProvider>
@@ -24,7 +25,8 @@ function App() {
               <>
                 <Hero />
                 <PostsStream />
-                {/* <PostsList /> */}
+
+                <Footer />
               </>
             }
           />

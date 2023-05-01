@@ -28,7 +28,7 @@ const Navigation = () => {
 
   return (
     <main>
-      <nav className="nav_container">
+      <nav className="nav_container container">
         {username && (
           <>
             <Link to="/" className="logo">

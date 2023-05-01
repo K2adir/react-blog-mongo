@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Post from "../components/Post/Post";
 
 const PostsStream = () => {
@@ -14,7 +15,13 @@ const PostsStream = () => {
   }, []);
 
   return (
-    <div>{posts.length > 0 && posts.map((post) => <Post {...post} />)}</div>
+    <div className="container">
+      <h1>Recent Posts</h1>{" "}
+      {posts.length > 0 && posts.map((post) => <Post {...post} />)}
+      <h2>
+        <Link to="/blog">See All Posts</Link>
+      </h2>
+    </div>
   );
 };
 
