@@ -12,13 +12,13 @@ import PostPage from "./pages/PostPage";
 import EditPost from "./pages/EditPost";
 import Hero from "./components/Hero/Hero";
 import Footer from "./components/Footer/Footer";
-import Nav from "./components/Nav/Nav";
+
 function App() {
   return (
     <UserContextProvider>
       <main className="App">
         <Navigation />
-        {/* <Nav /> */}
+
         <Routes>
           <Route
             index
