@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Navigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import "./NewPost.scss";
 /// React-Quill module -> from their npm
 const modules = {
   toolbar: [
@@ -62,28 +63,30 @@ const NewPost = () => {
     return <Navigate to={"/"} />;
   }
   return (
-    <form onSubmit={createPost}>
-      <input
-        type="title"
-        placeholder={"Title"}
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input
-        type="summary"
-        placeholder={"Summary"}
-        value={summary}
-        onChange={(e) => setSummary(e.target.value)}
-      />
-      <input type="file" onChange={(e) => setFiles(e.target.files)} />
-      <ReactQuill
-        value={content}
-        modules={modules}
-        formats={formats}
-        onChange={(newValue) => setContent(newValue)}
-      />
-      <button>Create Post</button>
-    </form>
+    <div className="form_create ">
+      <form onSubmit={createPost}>
+        <input
+          type="title"
+          placeholder={"Title"}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          type="summary"
+          placeholder={"Summary"}
+          value={summary}
+          onChange={(e) => setSummary(e.target.value)}
+        />
+        <input type="file" onChange={(e) => setFiles(e.target.files)} />
+        <ReactQuill
+          value={content}
+          modules={modules}
+          formats={formats}
+          onChange={(newValue) => setContent(newValue)}
+        />
+        <button>Create Post</button>
+      </form>
+    </div>
   );
 };
 

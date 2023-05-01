@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { format } from "date-fns";
 import "./Post.scss";
 
-const Post = ({ title, summary, cover, createdAt, _id }) => {
+const Post = ({ title, summary, cover, createdAt, _id, author }) => {
   return (
     <>
       <Link to={`/post/${_id}`}>
@@ -15,7 +15,7 @@ const Post = ({ title, summary, cover, createdAt, _id }) => {
             <h1>{title}</h1>
             <p>{summary}</p>
 
-            <Link>Author</Link>
+            <Link>{author.username}</Link>
             <time>{format(new Date(createdAt), "MMM d, yyyy")}</time>
           </div>
         </div>
