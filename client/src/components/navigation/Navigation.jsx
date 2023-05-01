@@ -5,7 +5,7 @@ import { UserContext } from "../../Context/UserContext";
 
 const Navigation = () => {
   const { setUserData, userData } = useContext(UserContext);
-  const [navVisible, setNavVisible] = useState(false);
+  const [navVisible, setNavVisible] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:4500/profile", {

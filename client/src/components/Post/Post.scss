@@ -18,6 +18,10 @@
     width: 100%;
     height: auto;
     border-radius: 1rem;
+    transition: filter 0.5s ease-in-out;
+  }
+  &:hover img {
+    filter: grayscale(100%);
   }
 
   .post_title {
