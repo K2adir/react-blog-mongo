@@ -1,13 +1,17 @@
 .footer_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin-top: 2rem;
   width: 100vw;
+  align-items: center;
 
-  background-color: #3f51b5;
-  height: 15vh;
+  background-color: #f86a6a;
+  height: 10vh;
   text-align: center;
   //   line-height: 1rem;
   h1,
   p {
-    color: white;
+    color: #243447;
   }
 }

@@ -1,11 +1,32 @@
-.nav_container {
+.nav_mobile {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 2rem;
+  justify-content: space-around;
+  @media screen and (max-width: 650px) {
+    flex-direction: column;
+    align-items: center;
+
+    a {
+      margin-top: 1rem;
+      &:first-child {
+        margin-top: 2rem;
+      }
+    }
+  }
 }
 
-.nav_links {
-  display: flex;
-  justify-content: flex-end;
-  gap: 3rem;
+.nav_hamburger {
+  text-align: center;
+  @media screen and (min-width: 650px) {
+    display: none;
+    color: red;
+  }
+}
+
+.nav_mobile__hide {
+  display: none;
+  @media screen and (min-width: 650px) {
+    display: flex;
+    justify-content: space-around;
+  }
 }

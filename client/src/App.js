@@ -12,6 +12,7 @@ import PostPage from "./pages/PostPage";
 import EditPost from "./pages/EditPost";
 import Hero from "./components/Hero/Hero";
 import Footer from "./components/Footer/Footer";
+
 function App() {
   return (
     <UserContextProvider>
@@ -25,8 +26,6 @@ function App() {
               <>
                 <Hero />
                 <PostsStream />
-
-                <Footer />
               </>
             }
           />
@@ -37,6 +36,7 @@ function App() {
           <Route path={"/edit/:id"} element={<EditPost />} />
           <Route path={"/post/:id"} element={<PostPage />} />
         </Routes>
+        <Footer />
       </main>
     </UserContextProvider>
   );

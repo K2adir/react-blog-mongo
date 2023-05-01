@@ -1,4 +1,13 @@
 .posts-container {
+  //   width: 95vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .posts-list {
+    width: 90vw;
+  }
   .pagination {
     display: flex;
     justify-content: center;
@@ -7,7 +16,7 @@
 
     .pagination-btn {
       padding: 15px 20px;
-      background-color: #007bff;
+      background-color: #f86a6a;
       color: #fff;
       border-radius: 4px;
       font-size: 14px;

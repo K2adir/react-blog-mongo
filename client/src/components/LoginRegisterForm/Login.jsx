@@ -49,7 +49,7 @@ const Login = () => {
   return (
     <div className="form_layout">
       <h1 className="login_h1">Login</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="form_tag" onSubmit={handleSubmit}>
         {error && <div className="error">{error}</div>}
         <label htmlFor="username">Username</label>
         <input

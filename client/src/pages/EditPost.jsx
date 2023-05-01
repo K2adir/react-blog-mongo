@@ -75,28 +75,30 @@ const EditPost = () => {
     return <Navigate to={"/"} />;
   }
   return (
-    <form onSubmit={updatePost}>
-      <input
-        type="title"
-        placeholder={"Title"}
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input
-        type="summary"
-        placeholder={"Summary"}
-        value={summary}
-        onChange={(e) => setSummary(e.target.value)}
-      />
-      <input type="file" onChange={(e) => setFiles(e.target.files)} />
-      <ReactQuill
-        value={content}
-        modules={modules}
-        formats={formats}
-        onChange={(newValue) => setContent(newValue)}
-      />
-      <button>Update Post</button>
-    </form>
+    <div className="form_create ">
+      <form onSubmit={updatePost}>
+        <input
+          type="title"
+          placeholder={"Title"}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          type="summary"
+          placeholder={"Summary"}
+          value={summary}
+          onChange={(e) => setSummary(e.target.value)}
+        />
+        <input type="file" onChange={(e) => setFiles(e.target.files)} />
+        <ReactQuill
+          value={content}
+          modules={modules}
+          formats={formats}
+          onChange={(newValue) => setContent(newValue)}
+        />
+        <button>Update Post</button>
+      </form>
+    </div>
   );
 };
 

@@ -2,21 +2,25 @@ import { Link } from "react-router-dom";
 import { format } from "date-fns";
 import "./Post.scss";
 
-const Post = ({ title, summary, cover, createdAt, _id }) => {
+const Post = ({ title, summary, cover, createdAt, _id, author }) => {
   return (
-    <div className="post_container">
+    <>
       <Link to={`/post/${_id}`}>
-        <img src={`http://localhost:4500/${cover}`} alt="" />
+        <div className="post_container">
+          <div className="post_img">
+            <img src={`http://localhost:4500/${cover}`} alt="" />
+          </div>
+
+          <div className="post_title">
+            <h1>{title}</h1>
+            <p>{summary}</p>
+
+            <h4>{author.username}</h4>
+            <time>{format(new Date(createdAt), "MMM d, yyyy")}</time>
+          </div>
+        </div>
       </Link>
-      <div className="post_title">
-        <Link to={`/post/${_id}`}>
-          <h1>{title}</h1>
-          <p>{summary}</p>
-        </Link>
-        <Link>Author</Link>
-        <time>{format(new Date(createdAt), "MMM d, yyyy")}</time>
-      </div>
-    </div>
+    </>
   );
 };
 

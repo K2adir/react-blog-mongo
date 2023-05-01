@@ -2,13 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: 1px dashed olivedrab;
+  //   outline: 1px dashed olivedrab;
   font-family: sans-serif;
 }
 
 body {
-  color: #ffff;
-  background-color: #3f3f3f;
+  color: white;
+  background-color: #243447;
+  overflow-x: hidden;
 }
 
 a {
@@ -21,12 +22,22 @@ main {
 }
 h1 {
   font-size: 2rem;
-  color: #white;
+  color: #f86a6a;
+}
+
+h2 {
+  color: #4ecdc4;
+}
+h3 {
+  color: #88dff7;
+}
+p {
+  color: #d8dde1;
 }
 
 .container {
   padding: 0.8rem;
-  max-width: 95vw;
+  max-width: 1400px;
   margin: 0 auto;
 }
 

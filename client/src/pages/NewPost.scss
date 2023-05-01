@@ -1,0 +1,40 @@
+.form_create {
+  //   display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px red solid;
+  justify-content: center;
+  width: 50% !important;
+  margin: auto;
+}
+
+.ql-container {
+  height: 50vh;
+}
+
+// React Quill rules
+.ql-toolbar.ql-snow .ql-picker-label::before,
+.ql-toolbar.ql-snow .ql-picker-item::before,
+.ql-snow .ql-stroke {
+  stroke: #ffffff;
+}
+
+.ql-snow .ql-fill,
+.ql-snow .ql-stroke.ql-fill {
+  fill: #ffffff;
+}
+
+.ql-picker-label::before {
+  color: white;
+}
+
+.ql-toolbar.ql-snow .ql-picker-label:hover::before,
+.ql-toolbar.ql-snow .ql-picker-item:hover::before,
+.ql-snow .ql-stroke:hover {
+  stroke: #cccccc;
+}
+
+.ql-snow .ql-fill:hover,
+.ql-snow .ql-stroke.ql-fill:hover {
+  fill: #cccccc;
+}
