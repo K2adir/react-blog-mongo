@@ -7,8 +7,9 @@
 }
 
 body {
-  color: #ffff;
+  color: white;
   background-color: #3f3f3f;
+  overflow-x: hidden;
 }
 
 a {
@@ -21,12 +22,12 @@ main {
 }
 h1 {
   font-size: 2rem;
-  color: #white;
+  color: white;
 }
 
 .container {
   padding: 0.8rem;
-  max-width: 95vw;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
