@@ -42,13 +42,15 @@ const EditPost = () => {
   //
 
   useEffect(() => {
-    fetch(`http://localhost:4500/post/${id}`).then((response) => {
-      response.json().then((postInfo) => {
-        setTitle(postInfo.title);
-        setContent(postInfo.content);
-        setSummary(postInfo.summary);
-      });
-    });
+    fetch(`https://mern-stuff-stuff-app.onrender.com/post/${id}`).then(
+      (response) => {
+        response.json().then((postInfo) => {
+          setTitle(postInfo.title);
+          setContent(postInfo.content);
+          setSummary(postInfo.summary);
+        });
+      }
+    );
   }, []);
 
   async function updatePost(e) {

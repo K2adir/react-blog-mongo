@@ -8,7 +8,7 @@ const Navi = () => {
   const [navVisible, setNavVisible] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:4500/profile", {
+    fetch("https://mern-stuff-stuff-app.onrender.com/profile", {
       credentials: "include",
     }).then((response) => {
       response.json().then((userInfo) => {

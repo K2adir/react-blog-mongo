@@ -13,11 +13,13 @@ const PostPage = () => {
 
   const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:4500/post/${id}`).then((response) => {
-      response.json().then((postInfo) => {
-        setPostInfo(postInfo);
-      });
-    });
+    fetch(`https://mern-stuff-stuff-app.onrender.com/post/${id}`).then(
+      (response) => {
+        response.json().then((postInfo) => {
+          setPostInfo(postInfo);
+        });
+      }
+    );
   }, []);
 
   if (!postInfo) return "";

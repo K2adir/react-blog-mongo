@@ -8,7 +8,10 @@ const Post = ({ title, summary, cover, createdAt, _id, author }) => {
       <Link to={`/post/${_id}`}>
         <div className="post_container">
           <div className="post_img">
-            <img src={`http://localhost:4500/${cover}`} alt="" />
+            <img
+              src={`https://mern-stuff-stuff-app.onrender.com/${cover}`}
+              alt=""
+            />
           </div>
 
           <div className="post_title">

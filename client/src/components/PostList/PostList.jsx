@@ -9,7 +9,9 @@ function PostsList() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:4500/blog?page=${page}&pageSize=5`)
+    fetch(
+      `https://mern-stuff-stuff-app.onrender.com/blog?page=${page}&pageSize=5`
+    )
       .then((response) => response.json())
       .then((data) => {
         setPosts(data.items);
