@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./Navigation.scss";
+import "./Navi.scss";
 import { UserContext } from "../../Context/UserContext";
 
-const Navigation = () => {
+const Navi = () => {
   const { setUserData, userData } = useContext(UserContext);
   const [navVisible, setNavVisible] = useState(true);
 
@@ -62,4 +62,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default Navi;
