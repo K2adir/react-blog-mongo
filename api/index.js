@@ -86,38 +86,50 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.get("/profile", (req, res) => {
-  const { token } = req.cookies;
+function checkJwtToken(req, res, next) {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(401).json("No JWT token provided");
+  }
   jwt.verify(token, secret, {}, (err, info) => {
-    if (err) throw err;
-    res.json(info);
+    if (err) {
+      return res.status(401).json("Invalid JWT token");
+    }
+    req.jwtInfo = info;
+    next();
   });
+}
+
+app.get("/profile", checkJwtToken, (req, res) => {
+  res.json(req.jwtInfo);
 });
 
 app.post("/logout", (req, res) => {
   res.cookie("token", "").json("ok");
 });
 
-app.put("/post", uploadMiddleware.single("file"), async (req, res) => {
-  let newPath = null;
-  if (req.file) {
-    const { originalname, path } = req.file;
-    const parts = originalname.split(".");
-    const ext = parts[parts.length - 1];
-    newPath = path + "." + ext;
-    fs.renameSync(path, newPath);
-  }
+app.put(
+  "/post",
+  checkJwtToken,
+  uploadMiddleware.single("file"),
+  async (req, res) => {
+    let newPath = null;
+    if (req.file) {
+      const { originalname, path } = req.file;
+      const parts = originalname.split(".");
+      const ext = parts[parts.length - 1];
+      newPath = path + "." + ext;
+      fs.renameSync(path, newPath);
+    }
 
-  const { token } = req.cookies;
-  jwt.verify(token, secret, {}, async (err, info) => {
-    if (err) throw err;
     const { id, title, summary, content } = req.body;
     const postDoc = await Post.findById(id);
-    const isAuthor = JSON.stringify(postDoc.author) === JSON.stringify(info.id);
+    const isAuthor =
+      JSON.stringify(postDoc.author) === JSON.stringify(req.jwtInfo.id);
     if (!isAuthor) {
       return res.status(400).json("you are not the author");
     }
-    await postDoc.update({
+    await postDoc.updateOne({
       title,
       summary,
       content,
@@ -125,80 +137,31 @@ app.put("/post", uploadMiddleware.single("file"), async (req, res) => {
     });
 
     res.json(postDoc);
-  });
-});
+  }
+);
 
-app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
-  const { originalname, path } = req.file;
-  const parts = originalname.split(".");
-  const ext = parts[parts.length - 1];
-  const newPath = path + "." + ext;
-  fs.renameSync(path, newPath);
+app.post(
+  "/post",
+  checkJwtToken,
+  uploadMiddleware.single("file"),
+  async (req, res) => {
+    const { originalname, path } = req.file;
+    const parts = originalname.split(".");
+    const ext = parts[parts.length - 1];
+    const newPath = path + "." + ext;
+    fs.renameSync(path, newPath);
 
-  const { token } = req.cookies;
-  jwt.verify(token, secret, {}, async (err, info) => {
-    if (err) throw err;
     const { title, summary, content } = req.body;
     const postDoc = await Post.create({
       title,
       summary,
       content,
       cover: newPath,
-      author: info.id,
+      author: req.jwtInfo.id,
     });
     res.json(postDoc);
-  });
-});
-
-// this can be used to display limited num of posts on main page,
-// and adapt the one below with pagination for another route.
-//for example, use ths on main page with 3 posts showing, place a Link for
-// all blog posts and edit the route of below to something else, like /allposts
-//
-
-app.get("/post", async (req, res) => {
-  res.json(
-    await Post.find()
-      .populate("author", ["username"])
-      .sort({ createdAt: -1 })
-      .limit(5)
-  );
-});
-
-// <PostList/> component works with this version
-app.get("/blog", async (req, res) => {
-  //pagination settings
-  const page = parseInt(req.query.page) || 1;
-  const pageSize = parseInt(req.query.pageSize) || 3;
-  const skip = (page - 1) * pageSize;
-
-  const posts = await Post.find()
-    .populate("author", ["username"])
-    .sort({ createdAt: -1 })
-    .skip(skip)
-    .limit(pageSize);
-
-  const totalPosts = await Post.countDocuments();
-  const totalPages = Math.ceil(totalPosts / pageSize);
-
-  res.json({
-    page,
-    totalPages,
-    pageSize,
-    items: posts,
-  });
-});
-
-// getting post via _id / for pages/postpage
-app.get("/post/:id", async (req, res) => {
-  const { id } = req.params;
-  const postDoc = await Post.findById(id).populate("author", ["username"]);
-  res.json(postDoc);
-});
-
-app.get("edit/:id", (req, res) => {
-  //
-});
+  }
+);
 
 app.listen(PORT, () => {
   console.log("listen @", PORT);
