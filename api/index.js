@@ -54,6 +54,10 @@ mongoose
     res.status(400).json(e);
   });
 
+app.use("/", (req, res) => {
+  res.send("hello");
+});
+
 app.post("/register", async (req, res) => {
   const { username, password } = req.body;
 
