@@ -50,7 +50,7 @@ const NewPost = () => {
     data.set("file", files[0]);
     //
     const response = await fetch(
-      "https://mern-stuff-stuff-app-api.onrender.com/post",
+      "https://mern-stuff-stuff-app.onrender.com/post",
       {
         method: "POST",
         body: data,

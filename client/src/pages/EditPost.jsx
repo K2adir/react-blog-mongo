@@ -42,7 +42,7 @@ const EditPost = () => {
   //
 
   useEffect(() => {
-    fetch(`https://mern-stuff-stuff-app-api.onrender.com/post/${id}`).then(
+    fetch(`https://mern-stuff-stuff-app.onrender.com/post/${id}`).then(
       (response) => {
         response.json().then((postInfo) => {
           setTitle(postInfo.title);
