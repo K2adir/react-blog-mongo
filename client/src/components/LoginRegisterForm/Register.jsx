@@ -11,7 +11,7 @@ const Register = () => {
     e.preventDefault();
 
     const response = await fetch(
-      "https://mern-stuff-stuff-app-api.onrender.com/register",
+      "https://mern-stuff-stuff-app.onrender.com/register",
       {
         method: "POST",
         body: JSON.stringify({ username, password }),

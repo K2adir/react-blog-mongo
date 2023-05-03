@@ -14,7 +14,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch(
-      "https://mern-stuff-stuff-app-api.onrender.com/login",
+      "https://mern-stuff-stuff-app.onrender.com/login",
       {
         method: "POST",
         body: JSON.stringify({ username, password }),
