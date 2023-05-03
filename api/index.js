@@ -25,7 +25,7 @@ const { request } = require("http");
 var salt = bcrypt.genSaltSync(10);
 const secret = process.env.JTW_PASS;
 ////
-
+app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
     credentials: true,
