@@ -28,7 +28,7 @@ const secret = process.env.JTW_PASS;
 
 app.use(
   cors({
-    credentials: true,
+    // credentials: true,
     origin: [
       "http://localhost:3000",
       "https://mern-stuff-stuff-app.onrender.com",
