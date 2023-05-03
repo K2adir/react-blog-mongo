@@ -134,10 +134,11 @@ dist
 
 # testing
 /coverage
+node_modules
+/node_modules
 
 # production
 /build
-
 # misc
 .DS_Store
 .env.local
