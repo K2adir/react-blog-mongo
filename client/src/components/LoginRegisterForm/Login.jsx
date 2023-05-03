@@ -3,6 +3,8 @@ import { Navigate } from "react-router";
 import { UserContext } from "../../Context/UserContext";
 import "./LoginRegisterForm.scss";
 
+import { URL } from "../../App";
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -13,15 +15,12 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(
-      "https://mern-stuff-stuff-app.onrender.com/login",
-      {
-        method: "POST",
-        body: JSON.stringify({ username, password }),
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-      }
-    );
+    const response = await fetch(`${URL}/login`, {
+      method: "POST",
+      body: JSON.stringify({ username, password }),
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    });
     ////
     if (response.ok) {
       response.json().then((userInfo) => {

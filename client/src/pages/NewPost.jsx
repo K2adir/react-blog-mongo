@@ -3,6 +3,7 @@ import { Form, Navigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./NewPost.scss";
+import { URL } from "../App";
 /// React-Quill module -> from their npm
 const modules = {
   toolbar: [
@@ -49,14 +50,11 @@ const NewPost = () => {
     data.set("content", content);
     data.set("file", files[0]);
     //
-    const response = await fetch(
-      "https://mern-stuff-stuff-app.onrender.com/post",
-      {
-        method: "POST",
-        body: data,
-        credentials: "include",
-      }
-    );
+    const response = await fetch(`${URL}/post`, {
+      method: "POST",
+      body: data,
+      credentials: "include",
+    });
     if (response.ok) {
       setRedirect(true);
     }

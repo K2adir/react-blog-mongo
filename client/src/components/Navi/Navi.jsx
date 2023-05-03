@@ -2,13 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./navi.scss";
 import { UserContext } from "../../Context/UserContext";
-
+import { URL } from "../../App";
 const Navi = () => {
   const { setUserData, userData } = useContext(UserContext);
   const [navVisible, setNavVisible] = useState(true);
 
   useEffect(() => {
-    fetch("https://mern-stuff-stuff-app.onrender.com/profile", {
+    fetch(`${URL}/profile`, {
       credentials: "include",
     }).then((response) => {
       response.json().then((userInfo) => {

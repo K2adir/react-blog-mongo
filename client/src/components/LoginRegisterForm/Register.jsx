@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./LoginRegisterForm.scss";
-
+import { URL } from "../../App";
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -10,14 +10,11 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(
-      "https://mern-stuff-stuff-app.onrender.com/register",
-      {
-        method: "POST",
-        body: JSON.stringify({ username, password }),
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    const response = await fetch(`${URL}/register`, {
+      method: "POST",
+      body: JSON.stringify({ username, password }),
+      headers: { "Content-Type": "application/json" },
+    });
 
     if (response.status === 200) {
       alert("Registered");

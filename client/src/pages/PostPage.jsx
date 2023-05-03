@@ -5,7 +5,7 @@ import { UserContext } from "../Context/UserContext";
 // safe way to use innerHTML
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
-
+import { URL } from "../App";
 const PostPage = () => {
   const [postInfo, setPostInfo] = useState(null);
 
@@ -13,13 +13,11 @@ const PostPage = () => {
 
   const { id } = useParams();
   useEffect(() => {
-    fetch(`https://mern-stuff-stuff-app.onrender.com/post/${id}`).then(
-      (response) => {
-        response.json().then((postInfo) => {
-          setPostInfo(postInfo);
-        });
-      }
-    );
+    fetch(`${URL}/post/${id}`).then((response) => {
+      response.json().then((postInfo) => {
+        setPostInfo(postInfo);
+      });
+    });
   }, []);
 
   if (!postInfo) return "";

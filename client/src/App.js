@@ -12,7 +12,8 @@ import PostPage from "./pages/PostPage";
 import EditPost from "./pages/EditPost";
 import Hero from "./components/Hero/Hero";
 import Footer from "./components/Footer/Footer";
-
+//
+export const URL = process.env.REACT_APP_SERVER_URL;
 function App() {
   return (
     <UserContextProvider>

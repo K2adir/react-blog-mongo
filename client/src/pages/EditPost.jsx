@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Form, Navigate, useParams } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { URL } from "../App";
 /// React-Quill module -> from their npm
 const modules = {
   toolbar: [
@@ -42,15 +43,13 @@ const EditPost = () => {
   //
 
   useEffect(() => {
-    fetch(`https://mern-stuff-stuff-app.onrender.com/post/${id}`).then(
-      (response) => {
-        response.json().then((postInfo) => {
-          setTitle(postInfo.title);
-          setContent(postInfo.content);
-          setSummary(postInfo.summary);
-        });
-      }
-    );
+    fetch(`${URL}/post/${id}`).then((response) => {
+      response.json().then((postInfo) => {
+        setTitle(postInfo.title);
+        setContent(postInfo.content);
+        setSummary(postInfo.summary);
+      });
+    });
   }, []);
 
   async function updatePost(e) {
