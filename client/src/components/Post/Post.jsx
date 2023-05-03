@@ -9,7 +9,7 @@ const Post = ({ title, summary, cover, createdAt, _id, author }) => {
         <div className="post_container">
           <div className="post_img">
             <img
-              src={`https://mern-stuff-stuff-app.onrender.com/${cover}`}
+              src={`https://mern-stuff-stuff-app-api.onrender.com/${cover}`}
               alt=""
             />
           </div>

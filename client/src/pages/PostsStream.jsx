@@ -7,7 +7,7 @@ const PostsStream = () => {
   //
   //
   useEffect(() => {
-    fetch("https://mern-stuff-stuff-app.onrender.com/post").then((response) => {
+    fetch(".onrender.com/post").then((response) => {
       response.json().then((posts) => {
         setPosts(posts);
       });
