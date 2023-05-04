@@ -31,7 +31,7 @@ app.use(
     credentials: true,
     origin: [
       "http://localhost:3000",
-      //   "https://mern-stuff-stuff-app.onrender.com",
+      "https://mern-stuff-stuff-app.onrender.com",
     ],
   })
 );
