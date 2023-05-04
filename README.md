@@ -5,6 +5,13 @@ User Auth, registration and login
 WYSIWYG text editor can create posts.
 Supports Pagination
 --
+User can login / logout 
+create post / edit post
+user A cannot edit post of user B
+pagination
+
+
+
 CSS for the individual post page should be updated
 
 
