@@ -26,15 +26,17 @@ var salt = bcrypt.genSaltSync(10);
 const secret = process.env.JTW_PASS;
 ////
 
-app.use(
-  cors({
-    credentials: true,
-    origin: [
-      "http://localhost:3000",
-      //   "https://mern-stuff-stuff-app.onrender.com",
-    ],
-  })
-);
+app.use(cors());
+
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: [
+//       "http://localhost:3000",
+//       //   "https://mern-stuff-stuff-app.onrender.com",
+//     ],
+//   })
+// );
 app.use(express.json());
 app.use(cookieParser());
 // lets express use the uploads folder. without this, no images/cover will be displayed
