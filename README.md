@@ -18,6 +18,12 @@ https://trello.com/b/qNbI4irS/react-blog
 ![Screenshot 2023-05-03 at 6 53 08 PM](https://user-images.githubusercontent.com/1120278/236068399-a347c86b-1e1a-4615-be33-1498ab8191e2.png)
 
 ![Screenshot 2023-05-03 at 9 22 21 PM](https://user-images.githubusercontent.com/1120278/236087023-cdfaa0f2-5e69-41d0-b681-9acfde7b0f60.png)
+
+![Screenshot 2023-05-03 at 9 24 35 PM](https://user-images.githubusercontent.com/1120278/236087534-12fddec1-1a92-457d-bb5f-275f9775e787.png)
+
+![Screenshot 2023-05-03 at 9 24 46 PM](https://user-images.githubusercontent.com/1120278/236087550-2a396952-7ac5-4d23-a661-486fbd430cbe.png)
+
 ![Screenshot 2023-05-03 at 9 22 57 PM](https://user-images.githubusercontent.com/1120278/236087045-b537351f-c821-4d07-b459-cebc8905e1a2.png)
+
 
 ![Screenshot 2023-05-03 at 9 23 10 PM](https://user-images.githubusercontent.com/1120278/236087055-c69e2292-9049-40d1-bf3f-a89b70d276d9.png)
