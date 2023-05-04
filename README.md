@@ -4,7 +4,8 @@ Features:
 User Auth, registration and login
 WYSIWYG text editor can create posts.
 Supports Pagination
-
+--
+CSS for the individual post page should be updated
 
 
 https://trello.com/b/qNbI4irS/react-blog
