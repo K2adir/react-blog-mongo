@@ -30,8 +30,8 @@ app.use(
   cors({
     credentials: true,
     origin: [
-      "https://mern-stuff-stuff-app.onrender.com",
       "http://localhost:3000",
+      //   "https://mern-stuff-stuff-app.onrender.com",
     ],
   })
 );
